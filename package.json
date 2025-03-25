@@ -2,7 +2,7 @@
   "name": "google-script-support",
   "displayName": "Google Script Support",
   "description": "Supports Syntax highlightting for Google App Script",
-  "version": "0.0.22",
+  "version": "0.0.24",
   "publisher": "AxiomPursuits",
   "icon": "icons/extension-icon.png",
   "engines": {
