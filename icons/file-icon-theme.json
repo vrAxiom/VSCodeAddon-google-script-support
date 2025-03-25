@@ -1,0 +1,29 @@
+{
+  "iconDefinitions": {
+    "google-apps-script": {
+      "iconPath": "./google-apps-script.svg"
+    }
+  },
+  "fileExtensions": {
+    "gs": "google-apps-script"
+  },
+  "languageIds": {
+    "googleappsscript": "google-apps-script"
+  },
+  "light": {
+    "fileExtensions": {
+      "gs": "google-apps-script"
+    },
+    "languageIds": {
+      "googleappsscript": "google-apps-script"
+    }
+  },
+  "highContrast": {
+    "fileExtensions": {
+      "gs": "google-apps-script"
+    },
+    "languageIds": {
+      "googleappsscript": "google-apps-script"
+    }
+  }
+}

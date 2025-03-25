@@ -1,0 +1,81 @@
+{
+  "name": "google-script-support",
+  "displayName": "Google Script Support",
+  "description": "Supports Syntax highlightting for Google App Script",
+  "version": "0.0.11",
+  "publisher": "AxiomPursuits",
+  "icon": "icons/extension-icon.png",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "google-script-support.enableIcons",
+        "title": "Enable Google Apps Script Icons"
+      }
+    ],
+    "languages": [
+      {
+        "id": "googleappsscript",
+        "extensions": [
+          ".gs"
+        ],
+        "aliases": [
+          "Google Apps Script",
+          "gs"
+        ],
+        "icon": {
+          "light": "./icons/google-apps-script.svg",
+          "dark": "./icons/google-apps-script.svg"
+        },
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "google-apps-script-icons",
+        "label": "Google Apps Script Icons",
+        "path": "./icons/file-icon-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run increment-version && webpack --mode production --devtool hidden-source-map",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "npm run vscode:prepublish && npm run create-vsix",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "increment-version": "node scripts/increment-version.js",
+    "create-vsix": "vsce package -o dist/google-script-support.vsix",
+    "clean": "rimraf dist/*.vsix"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.98.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "canvas": "^3.1.0",
+    "eslint": "^9.21.0",
+    "rimraf": "^5.0.10",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "vsce": "^2.15.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
