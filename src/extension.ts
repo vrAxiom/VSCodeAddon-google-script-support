@@ -1,18 +1,33 @@
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Get the extension version from package.json
+function getExtensionVersion(): string {
+	try {
+		const packageJsonPath = path.join(__dirname, '..', 'package.json');
+		const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+		return packageJson.version;
+	} catch (error) {
+		console.error('Error reading package.json:', error);
+		return 'unknown';
+	}
+}
 
 export function activate(context: vscode.ExtensionContext) {
-	console.log('Google Apps Script syntax support is now active');
+	const version = getExtensionVersion();
+	console.log(`Google Apps Script syntax support v${version} is now active`);
 	
-	// Register commands
+	// Register command to enable custom icons if the user wants them
 	const disposable = vscode.commands.registerCommand('google-script-support.enableIcons', () => {
 		vscode.workspace.getConfiguration().update('workbench.iconTheme', 'google-apps-script-icons', vscode.ConfigurationTarget.Global);
-		vscode.window.showInformationMessage('Google Apps Script icons enabled!');
+		vscode.window.showInformationMessage(`Google Apps Script icons enabled! (v${version})`);
 	});
 	
 	context.subscriptions.push(disposable);
 	
-	// Automatically enable the icon theme when the extension is activated
-	vscode.workspace.getConfiguration().update('workbench.iconTheme', 'google-apps-script-icons', vscode.ConfigurationTarget.Global);
+	// We no longer automatically enable the icon theme to avoid breaking standard icons
+	// The user can enable it manually if desired using the command
 }
 
 export function deactivate() {}

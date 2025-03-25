@@ -1,0 +1,11 @@
+{
+  "name": "Google Apps Script",
+  "scopeName": "source.gs",
+  "fileTypes": ["gs"],
+  "patterns": [
+    {
+      "include": "source.js"
+    }
+  ],
+  "uuid": "805375ec-d614-41f5-8993-5843fe63ea82"
+}

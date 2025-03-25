@@ -2,7 +2,7 @@
   "name": "google-script-support",
   "displayName": "Google Script Support",
   "description": "Supports Syntax highlightting for Google App Script",
-  "version": "0.0.11",
+  "version": "0.0.22",
   "publisher": "AxiomPursuits",
   "icon": "icons/extension-icon.png",
   "engines": {
@@ -10,9 +10,6 @@
   },
   "categories": [
     "Other"
-  ],
-  "activationEvents": [
-    "*"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -24,7 +21,7 @@
     ],
     "languages": [
       {
-        "id": "googleappsscript",
+        "id": "javascript",
         "extensions": [
           ".gs"
         ],
@@ -37,6 +34,13 @@
           "dark": "./icons/google-apps-script.svg"
         },
         "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "javascript",
+        "scopeName": "source.gs",
+        "path": "./syntaxes/googleappsscript.tmLanguage.json"
       }
     ],
     "iconThemes": [
